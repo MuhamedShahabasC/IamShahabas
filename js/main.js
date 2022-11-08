@@ -18,7 +18,7 @@
     	$("#loader").fadeOut("slow", function(){
 
         // will fade out the whole DIV that covers the website.
-        $("#preloader").delay(300).fadeOut("slow");
+        $("#preloader").delay(100).fadeOut("slow");
 
       });       
 
@@ -215,7 +215,7 @@
   	/*---------------------------------------------------- */
 	/*	contact form
 	------------------------------------------------------ */
-
+	
 	/* local validation */
 	$('#contactForm').validate({
 
@@ -227,30 +227,20 @@
 			$.ajax({      	
 
 		      type: "POST",
-		      url: "inc/sendEmail.php",
+			  method: "post",
+		      url: "https://script.google.com/macros/s/AKfycbyxjX0tc3IgkM3Ndd9RquKV6hhegWJZtnAPlxWT5Gfxm8LnP3PDy_tkiyeA1Xrg-GZ0/exec",
 		      data: $(form).serialize(),
 		      beforeSend: function() { 
 
 		      	sLoader.fadeIn(); 
 
 		      },
-		      success: function(msg) {
-
-	            // Message was sent
-	            if (msg == 'OK') {
-	            	sLoader.fadeOut(); 
-	               $('#message-warning').hide();
-	               $('#contactForm').fadeOut();
-	               $('#message-success').fadeIn();   
-	            }
-	            // There was an error
-	            else {
-	            	sLoader.fadeOut(); 
-	               $('#message-warning').html(msg);
-		            $('#message-warning').fadeIn();
-	            }
-
-		      },
+		      success: function(){
+				sLoader.fadeOut();
+				$('#message-success').fadeIn();
+				setTimeout(function(){ window.location.reload();}, 3000);
+				
+			},
 		      error: function() {
 
 		      	sLoader.fadeOut(); 

@@ -25,6 +25,7 @@
    ================================================== -->   
 	<script src="js/modernizr.js"></script>
 	<script src="js/pace.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 	
 
    <!-- favicons
@@ -820,35 +821,48 @@
    		<div class="col-twelve">
 
             <!-- form -->
-            <form name="contactForm" id="contactForm" method="post" action="https://script.google.com/macros/s/AKfycbzlrMTAxE0f7TsscS5q3FWUcWqA5iwer2XtvsasR72JmoVBW3z0cp7IjXRnL7IaxYYW/exec">
+            <form name="contactForm" id="contactForm" method="post" action="">
       			<fieldset>
 
                   <div class="form-field">
- 						   <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="">
+ 						   <input name="contactName" type="text" id="contactNames" placeholder="Name" value="" minlength="2" required="">
                   </div>
                   <div class="form-field">
-	      			   <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required="">
+	      			   <input name="contactEmail" type="email" id="contactEmails" placeholder="Email" value="" required="">
 	               </div>
                   <div class="form-field">
-	     				   <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="">
+	     				   <input name="contactSubject" type="text" id="contactSubjects" placeholder="Subject" value="">
 	               </div>                       
                   <div class="form-field">
-	                 	<textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea>
+	                 	<textarea name="contactMessage" id="contactMessages" placeholder="Message" rows="10" cols="50" required=""></textarea>
 	               </div>                      
                  <div class="form-field">
-                     <button class="submitform">Submit</button>
+                     <button class="submitform" value="submit" type="submit">Submit</button>
                      <div id="submit-loader">
-                        <div class="text-loader">Sending...</div>                             
-       				      <div class="s-loader">
-								  	<div class="bounce1"></div>
-								  	<div class="bounce2"></div>
-								  	<div class="bounce3"></div>
-								</div>
+                        <div class="text-loader text-light">Sending...</div>                             
+       				      	<div class="s-loader">
+								<div class="bounce1"></div>
+								<div class="bounce2"></div>
+								<div class="bounce3"></div>
 							</div>
+						</div>
                   </div>
 
       			</fieldset>
       		</form> <!-- Form End -->
+
+			  <!-- <script>
+				const scriptURL = 'https://script.google.com/macros/s/AKfycbyoyAAllqoO0PjAy00HlCRZ-XmMgVNeE81ZOPqpCKPM36XnTj3tn0kKG9n3Ms1mzQLY/exec'
+				const form = document.forms['contactForm']
+			  
+				form.addEventListener('submit', e => {
+				  e.preventDefault()
+				  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+					.then(response => alert("Thank you! your form is submitted successfully." ))
+					.then(() => {  window.location.reload(); })
+					.catch(error => console.error('Error!', error.message))
+				})
+			  </script> -->
 
             <!-- contact-warning -->
             <div id="message-warning">            	
